@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; }
+body { background: #ffffff; color: #0B172A; }
+.call-shadow { box-shadow: 0 12px 30px rgba(31,111,235,.25); }
