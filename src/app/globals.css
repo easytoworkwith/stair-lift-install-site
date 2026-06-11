@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 :root { color-scheme: light; }
-html { scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   background: #fcfcfd;
   color: #0B172A;
+  overflow-x: hidden;
 }
+img { max-width: 100%; height: auto; }
 .call-shadow { box-shadow: 0 12px 30px rgba(31,111,235,.22); }
 .soft-card { box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06); }
-.section-pad { @apply py-16 md:py-20; }
+.section-pad { @apply py-12 sm:py-14 md:py-20; }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
