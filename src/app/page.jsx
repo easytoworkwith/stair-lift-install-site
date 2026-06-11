@@ -1,32 +1,55 @@
-import { CheckCircle, Clock, Home, Phone, ShieldCheck, Wrench } from 'lucide-react';
+import {
+  ArrowRight,
+  CheckCircle2,
+  Clock3,
+  Home,
+  Phone,
+  ShieldCheck,
+  Wrench,
+} from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { siteConfig } from '../components/siteConfig';
 
-const services = [
+const options = [
   {
-    title: 'Straight Stair Lift Installation',
+    title: 'Straight Stair Lifts',
     copy: 'For standard staircases with a direct path between floors.',
   },
   {
-    title: 'Curved Stair Lift Options',
+    title: 'Curved Stair Lifts',
     copy: 'For staircases with turns, landings, or custom layouts.',
   },
   {
     title: 'Indoor Stair Lifts',
-    copy: 'Home accessibility options for interior stairways.',
+    copy: 'For interior stairs inside the home.',
   },
   {
     title: 'Outdoor Stair Lifts',
-    copy: 'Weather-ready options may be available in select areas.',
+    copy: 'Outdoor options may be available depending on location.',
   },
   {
-    title: 'Stair Lift Replacement',
+    title: 'Replacement Options',
     copy: 'Discuss replacement options for older or existing stair lifts.',
   },
   {
-    title: 'Stair Lift Consultation',
-    copy: 'Call to review your home setup and available provider options.',
+    title: 'Availability Check',
+    copy: 'Call to review your staircase and local provider availability.',
+  },
+];
+
+const steps = [
+  {
+    title: 'Call The Number',
+    copy: 'Tap the call button or dial the number shown on this page.',
+  },
+  {
+    title: 'Share Your Staircase Type',
+    copy: 'Tell the representative if your stairs are straight, curved, indoor, or outdoor.',
+  },
+  {
+    title: 'Check Available Options',
+    copy: 'Get connected with independent providers when service is available in your area.',
   },
 ];
 
@@ -37,18 +60,26 @@ const faqs = [
   ['Is this website a stair lift company?', 'No. This website connects consumers with independent stair lift and home accessibility service providers. We do not directly install stair lifts.'],
 ];
 
-function CallButton({ children = 'Call Now' }) {
+function CallButton({ children = 'Call Now', light = false, className = '' }) {
   return (
-    <a href={`tel:${siteConfig.phoneTel}`} className="inline-flex items-center justify-center gap-2 bg-brand-blue text-white px-7 py-4 rounded-full font-bold text-lg hover:opacity-90 call-shadow transition-opacity">
-      <Phone size={22} /> {children}
+    <a
+      href={`tel:${siteConfig.phoneTel}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-base md:text-lg font-extrabold transition-all ${
+        light
+          ? 'bg-white text-brand-dark hover:bg-slate-100'
+          : 'bg-brand-blue text-white hover:opacity-95 call-shadow'
+      } ${className}`}
+    >
+      <Phone size={21} /> {children}
     </a>
   );
 }
 
-function SectionImage({ src, alt, className = '' }) {
+function TrustItem({ children }) {
   return (
-    <div className={`overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg ${className}`}>
-      <img src={src} alt={alt} className="block h-full w-full object-cover" />
+    <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 soft-card">
+      <CheckCircle2 size={18} className="text-brand-blue shrink-0" />
+      {children}
     </div>
   );
 }
@@ -58,173 +89,201 @@ export default function HomePage() {
     <main>
       <Header />
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-brand-light via-white to-slate-50">
-        <div className="max-w-6xl mx-auto px-4 py-14 md:py-24 grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 bg-white border border-blue-100 rounded-full px-4 py-2 text-sm font-semibold text-brand-navy mb-5">
-              <Home size={16} /> Home Accessibility Support
-            </div>
-            <h1 className="text-4xl md:text-5xl xl:text-6xl font-extrabold tracking-tight text-brand-dark leading-[1.05] mb-5">
-              Connect With Stair Lift Installation Providers Near You
-            </h1>
-            <p className="text-lg md:text-xl text-slate-700 leading-8 mb-8">
-              Call to learn about available stair lift installation options for your home and get connected with independent local providers.
-            </p>
-            <div className="mb-7">
-              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                <CallButton>Call {siteConfig.phoneDisplay}</CallButton>
-                <div className="rounded-2xl bg-white border border-blue-100 px-5 py-4 shadow-sm">
-                  <div className="text-xs uppercase tracking-wide font-bold text-brand-blue mb-1">Call Center Hours</div>
-                  <div className="text-sm md:text-base font-semibold text-slate-700">{siteConfig.hoursShort}</div>
-                </div>
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#f7fbff] via-white to-white">
+        <div className="absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top_left,_rgba(31,111,235,0.14),_transparent_42%)]" />
+        <div className="max-w-6xl mx-auto px-4 pt-10 pb-14 md:pt-16 md:pb-20 relative">
+          <div className="grid lg:grid-cols-[1.05fr,0.95fr] gap-10 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-extrabold text-brand-blue soft-card">
+                <Home size={16} /> Stair Lift Installation Options
               </div>
-            </div>
 
-            <div className="rounded-3xl bg-white/80 border border-slate-200 shadow-sm p-5 mb-7">
-              <div className="grid sm:grid-cols-2 gap-4">
-                {['Local provider connection', 'Options for different stair layouts', 'Real call support', 'Availability varies by location'].map((item) => (
-                  <div key={item} className="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                    <CheckCircle size={19} className="text-brand-blue shrink-0" /> {item}
-                  </div>
-                ))}
-              </div>
-            </div>
+              <h1 className="mt-5 text-4xl md:text-5xl xl:text-6xl font-extrabold tracking-tight text-brand-dark leading-[1.02] max-w-3xl">
+                Call To Check Stair Lift Installation Options Near You
+              </h1>
 
-            <p className="text-xs text-slate-500">Service availability, pricing, and installation timelines vary by location and provider.</p>
-          </div>
-
-          <div className="relative">
-            <SectionImage src="/images/hero-stairlift.png" alt="Older adult using a stair lift in a bright home interior" className="aspect-[4/3]" />
-            <div className="absolute -bottom-5 left-6 right-6 rounded-2xl bg-white border border-slate-200 shadow-xl p-4 hidden md:flex items-center justify-between gap-4">
-              <div>
-                <div className="text-xs font-bold uppercase tracking-wide text-brand-blue">Speak With A Representative</div>
-                <div className="font-extrabold text-brand-dark">{siteConfig.phoneDisplay}</div>
-              </div>
-              <a href={`tel:${siteConfig.phoneTel}`} className="bg-brand-blue text-white rounded-full px-5 py-3 font-bold text-sm hover:opacity-90">Call Now</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-14 bg-white">
-        <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-10 items-center">
-          <SectionImage src="/images/family-support.png" alt="Older adult with caregiver beside a stair lift in a home" className="aspect-[4/3]" />
-          <div>
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="p-6 rounded-2xl border border-slate-200 bg-white shadow-sm">
-                <ShieldCheck className="text-brand-blue mb-4" size={34} />
-                <h3 className="text-xl font-bold mb-2">Provider Connection</h3>
-                <p className="text-slate-600 leading-7">Get connected with independent providers who may serve your area.</p>
-              </div>
-              <div className="p-6 rounded-2xl border border-slate-200 bg-white shadow-sm">
-                <Wrench className="text-brand-blue mb-4" size={34} />
-                <h3 className="text-xl font-bold mb-2">Installation Options</h3>
-                <p className="text-slate-600 leading-7">Discuss straight, curved, indoor, or outdoor stair lift options based on your home setup.</p>
-              </div>
-              <div className="p-6 rounded-2xl border border-slate-200 bg-white shadow-sm">
-                <Clock className="text-brand-blue mb-4" size={34} />
-                <h3 className="text-xl font-bold mb-2">Call Support</h3>
-                <p className="text-slate-600 leading-7">Speak with a representative during call center hours to check availability.</p>
-              </div>
-            </div>
-            <div className="rounded-3xl bg-slate-50 border border-slate-200 p-6 md:p-8">
-              <h2 className="text-3xl font-extrabold text-brand-dark mb-4">A Simple Way To Explore Stair Lift Options</h2>
-              <p className="text-slate-700 leading-8 mb-4">
-                If you are looking for stair lift installation help, a call can be the fastest way to discuss your staircase type, home layout, and available provider options.
+              <p className="mt-5 text-lg md:text-xl text-slate-600 leading-8 max-w-2xl">
+                Speak with a representative about your staircase and get connected with independent stair lift providers when available in your area.
               </p>
-              <p className="text-slate-700 leading-8">
-                This website is designed to help homeowners, family members, and caregivers connect with independent providers who may offer stair lift and accessibility solutions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section id="services" className="py-18 bg-gradient-to-b from-slate-50 to-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-2 bg-white border border-blue-100 rounded-full px-4 py-2 text-sm font-bold text-brand-blue mb-4 shadow-sm">
-              <Wrench size={16} /> Installation Options
-            </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-brand-dark mb-4">Stair Lift Installation Services</h2>
-            <p className="text-lg text-slate-700 leading-8">Service options may vary by location and provider. Call to check what is available near you.</p>
-          </div>
-
-          <div className="grid lg:grid-cols-[0.95fr,1.05fr] gap-8 items-stretch">
-            <div className="relative overflow-hidden rounded-3xl shadow-xl border border-slate-200 min-h-[420px]">
-              <img src="/images/stairlift-product.png" alt="Installed stair lift on a residential staircase" className="absolute inset-0 h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-7 text-white">
-                <h3 className="text-2xl font-extrabold mb-2">Home Accessibility Starts With The Right Setup</h3>
-                <p className="text-blue-50 leading-7">Speak with a representative about your staircase type, layout, and available provider options.</p>
-              </div>
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-4">
-              {services.map((service, index) => (
-                <div key={service.title} className="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
-                  <div className="flex items-start gap-4">
-                    <div className="h-11 w-11 rounded-2xl bg-brand-light text-brand-blue flex items-center justify-center shrink-0 group-hover:bg-brand-blue group-hover:text-white transition-colors">
-                      <CheckCircle size={22} />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-brand-blue mb-1">Option {index + 1}</div>
-                      <h3 className="text-lg font-extrabold text-brand-dark mb-2">{service.title}</h3>
-                      <p className="text-sm text-slate-600 leading-6">{service.copy}</p>
-                    </div>
+              <div className="mt-8 rounded-[2rem] border border-slate-200 bg-white p-5 md:p-6 soft-card max-w-2xl">
+                <div className="grid sm:grid-cols-[auto,1fr] gap-4 items-center">
+                  <CallButton>Call {siteConfig.phoneDisplay}</CallButton>
+                  <div>
+                    <div className="text-sm font-extrabold text-brand-dark">Phone support available daily</div>
+                    <div className="mt-1 text-sm text-slate-600">{siteConfig.hoursShort}</div>
+                    <div className="mt-2 text-xs text-slate-500">Availability, pricing, and timelines vary by location and provider.</div>
                   </div>
                 </div>
-              ))}
+              </div>
 
-              <div className="sm:col-span-2 rounded-2xl bg-brand-navy text-white p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div>
-                  <h3 className="text-xl font-extrabold mb-1">Not sure which option fits?</h3>
-                  <p className="text-blue-100 text-sm leading-6">Call to discuss your staircase and check local provider availability.</p>
+              <div className="mt-6 grid sm:grid-cols-2 gap-3 max-w-2xl">
+                <TrustItem>Fast phone-based availability check</TrustItem>
+                <TrustItem>Straight & curved stair options</TrustItem>
+                <TrustItem>Support for homeowners & caregivers</TrustItem>
+                <TrustItem>Independent provider connection</TrustItem>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white soft-card">
+                <img
+                  src="/images/hero-stairlift.png"
+                  alt="Older adult using a stair lift in a bright home interior"
+                  className="block h-full w-full object-cover aspect-[4/3]"
+                />
+              </div>
+
+              <div className="hidden md:block absolute -bottom-6 left-6 right-6 rounded-3xl bg-white border border-slate-200 p-5 soft-card">
+                <div className="grid grid-cols-[auto,1fr] gap-4 items-center">
+                  <div className="h-14 w-14 rounded-2xl bg-brand-blue text-white flex items-center justify-center">
+                    <Phone size={26} />
+                  </div>
+                  <div>
+                    <div className="text-xs uppercase tracking-[0.14em] font-extrabold text-brand-blue">Ready to check options?</div>
+                    <div className="text-xl font-extrabold text-brand-dark">Call {siteConfig.phoneDisplay}</div>
+                    <div className="text-sm text-slate-500">Talk through your staircase type and location.</div>
+                  </div>
                 </div>
-                <CallButton>Call Now</CallButton>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section id="how-it-works" className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark text-center mb-10">How It Works</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="mt-14 grid md:grid-cols-3 gap-4">
             {[
-              ['1', 'Call Us', 'Tap the call button and speak with a representative.'],
-              ['2', 'Share Your Home Setup', 'Explain your staircase type and installation needs.'],
-              ['3', 'Get Connected', 'Connect with available independent providers when possible.'],
+              ['1', 'Call Now', 'Use the number above to speak with a representative.'],
+              ['2', 'Answer A Few Questions', 'Share your staircase type, home setup, and location.'],
+              ['3', 'Check Local Options', 'Provider options may vary by area and availability.'],
             ].map(([num, title, copy]) => (
-              <div key={num} className="text-center p-7 rounded-2xl bg-brand-light border border-blue-100">
-                <div className="w-12 h-12 mx-auto rounded-full bg-brand-blue text-white flex items-center justify-center font-bold text-xl mb-4">{num}</div>
-                <h3 className="text-xl font-bold mb-2">{title}</h3>
-                <p className="text-slate-600 leading-7">{copy}</p>
+              <div key={title} className="rounded-3xl border border-slate-200 bg-white p-6 soft-card">
+                <div className="h-11 w-11 rounded-2xl bg-brand-light text-brand-blue flex items-center justify-center font-extrabold mb-4">{num}</div>
+                <h3 className="text-lg font-extrabold text-brand-dark mb-2">{title}</h3>
+                <p className="text-sm text-slate-600 leading-6">{copy}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-brand-navy text-white">
-        <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-[1.1fr,0.9fr] gap-10 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Call To Check Stair Lift Installation Availability</h2>
-            <p className="text-blue-100 text-lg leading-8 mb-7">Speak with a representative about available stair lift options for your home.</p>
-            <CallButton>Call {siteConfig.phoneDisplay}</CallButton>
+      <section id="options" className="section-pad bg-[#f8fafc]">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid lg:grid-cols-[0.9fr,1.1fr] gap-10 items-start">
+            <div className="lg:sticky lg:top-32">
+              <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white soft-card">
+                <img src="/images/stairlift-product.png" alt="Installed stair lift on a residential staircase" className="block w-full object-cover aspect-[4/3]" />
+                <div className="p-7">
+                  <h2 className="text-3xl font-extrabold text-brand-dark leading-tight">Not Sure Which Stair Lift Option Fits?</h2>
+                  <p className="mt-4 text-slate-600 leading-7">
+                    Call to discuss your staircase and check what provider options may be available near you.
+                  </p>
+                  <CallButton className="mt-6 w-full">Call Now</CallButton>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-sm font-extrabold text-brand-blue soft-card">
+                <Wrench size={16} /> Service Options
+              </div>
+              <h2 className="mt-5 text-3xl md:text-4xl font-extrabold text-brand-dark">Stair Lift Installation Services</h2>
+              <p className="mt-4 text-lg text-slate-600 leading-8">
+                These are common stair lift categories users ask about. Service availability varies by location and provider.
+              </p>
+
+              <div className="mt-8 grid sm:grid-cols-2 gap-5">
+                {options.map((item) => (
+                  <div key={item.title} className="rounded-3xl border border-slate-200 bg-white p-6 soft-card">
+                    <div className="h-11 w-11 rounded-2xl bg-brand-light text-brand-blue flex items-center justify-center mb-4">
+                      <CheckCircle2 size={22} />
+                    </div>
+                    <h3 className="text-lg font-extrabold text-brand-dark mb-2">{item.title}</h3>
+                    <p className="text-sm text-slate-600 leading-6">{item.copy}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 rounded-3xl bg-brand-navy text-white p-6 md:p-7 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+                <div>
+                  <h3 className="text-2xl font-extrabold">Questions about installation?</h3>
+                  <p className="mt-2 text-blue-100 leading-7">Call to check local availability and speak with a representative.</p>
+                </div>
+                <CallButton light className="shrink-0">Call {siteConfig.phoneDisplay}</CallButton>
+              </div>
+            </div>
           </div>
-          <SectionImage src="/images/stairlift-product.png" alt="Stair lift installed in a clean home interior" className="aspect-[4/3] max-w-xl lg:ml-auto" />
         </div>
       </section>
 
-      <section id="faq" className="py-16 bg-white">
+      <section id="process" className="section-pad bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid lg:grid-cols-[1.1fr,0.9fr] gap-10 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-sm font-extrabold text-brand-blue soft-card">
+                <ShieldCheck size={16} /> Simple Call Process
+              </div>
+              <h2 className="mt-5 text-3xl md:text-4xl font-extrabold text-brand-dark">From Call To Available Options</h2>
+              <p className="mt-4 text-lg text-slate-600 leading-8">
+                The goal is simple: help users quickly understand what stair lift installation options may be available based on their home setup.
+              </p>
+
+              <div className="mt-8 space-y-5">
+                {steps.map((step, index) => (
+                  <div key={step.title} className="rounded-3xl border border-slate-200 bg-white p-6 soft-card flex gap-5">
+                    <div className="h-12 w-12 rounded-2xl bg-brand-blue text-white flex items-center justify-center font-extrabold shrink-0">
+                      {index + 1}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-extrabold text-brand-dark mb-2">{step.title}</h3>
+                      <p className="text-slate-600 leading-7">{step.copy}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white soft-card">
+              <img src="/images/family-support.png" alt="Older adult with caregiver beside a stair lift in a home" className="block h-full w-full object-cover aspect-[4/3]" />
+              <div className="p-7 bg-white">
+                <div className="flex items-start gap-3">
+                  <Clock3 size={22} className="text-brand-blue mt-1 shrink-0" />
+                  <div>
+                    <h3 className="text-xl font-extrabold text-brand-dark">Call Center Hours</h3>
+                    <p className="mt-2 text-slate-600 leading-7">{siteConfig.hoursShort}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad bg-brand-navy text-white">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-extrabold mb-5">
+            <Phone size={16} /> Speak With A Representative
+          </div>
+          <h2 className="text-3xl md:text-5xl font-extrabold leading-tight max-w-3xl mx-auto">
+            Call Now To Check Stair Lift Installation Options Near You
+          </h2>
+          <p className="mt-5 text-blue-100 text-lg leading-8 max-w-2xl mx-auto">
+            Service availability, pricing, and installation timelines vary by location and independent provider.
+          </p>
+          <div className="mt-8">
+            <CallButton light>Call {siteConfig.phoneDisplay}</CallButton>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="section-pad bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark mb-8">Frequently Asked Questions</h2>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark">Frequently Asked Questions</h2>
+            <p className="mt-4 text-lg text-slate-600">Helpful answers before you call.</p>
+          </div>
           <div className="space-y-4">
             {faqs.map(([q, a]) => (
-              <div key={q} className="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm">
-                <h3 className="text-lg font-bold text-brand-dark mb-2">{q}</h3>
+              <div key={q} className="rounded-3xl border border-slate-200 bg-white p-6 soft-card">
+                <h3 className="text-lg font-extrabold text-brand-dark mb-2">{q}</h3>
                 <p className="text-slate-600 leading-7">{a}</p>
               </div>
             ))}
@@ -232,22 +291,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-10 bg-slate-50">
+      <section id="hours" className="pb-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="bg-white border border-slate-200 rounded-2xl p-7">
-            <h2 className="text-2xl font-bold text-slate-700 mb-5">Call Center Hours</h2>
-            <div className="space-y-2 text-lg text-slate-600">
-              {siteConfig.hoursFull.map(([day, time]) => (
-                <p key={day}>{day}: <strong>{time}</strong></p>
-              ))}
+          <div className="rounded-[2rem] border border-slate-200 bg-[#f8fafc] p-8 md:p-10 soft-card">
+            <div className="grid lg:grid-cols-[0.8fr,1.2fr] gap-8 items-start">
+              <div>
+                <h2 className="text-2xl md:text-3xl font-extrabold text-brand-dark mb-4">Call Center Hours</h2>
+                <p className="text-slate-600 leading-7">Reach out during the hours below to speak with a representative.</p>
+              </div>
+              <div className="grid sm:grid-cols-3 gap-4">
+                {siteConfig.hoursFull.map(([day, time]) => (
+                  <div key={day} className="rounded-2xl border border-slate-200 bg-white p-5">
+                    <div className="font-extrabold text-brand-dark mb-2">{day}</div>
+                    <div className="text-slate-600 text-sm leading-6">{time}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section className="py-10 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="rounded-2xl bg-slate-50 border border-slate-200 p-6 text-sm text-slate-600 leading-7">
+          <div className="mt-8 rounded-3xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600 leading-7">
             <strong className="text-brand-dark">Disclaimer:</strong> This website connects consumers with independent stair lift and home accessibility service providers. We do not directly provide stair lift installation services. Availability, pricing, installation timelines, and service options vary by location and provider. Calling this number does not guarantee that service is available in your area.
           </div>
         </div>
@@ -255,7 +318,10 @@ export default function HomePage() {
 
       <Footer />
 
-      <a href={`tel:${siteConfig.phoneTel}`} className="fixed bottom-4 left-4 right-4 md:hidden bg-brand-blue text-white py-4 rounded-full text-center font-bold call-shadow z-50">
+      <a
+        href={`tel:${siteConfig.phoneTel}`}
+        className="fixed bottom-4 left-4 right-4 md:hidden rounded-full bg-brand-blue px-5 py-4 text-center font-extrabold text-white call-shadow z-50"
+      >
         Call Now: {siteConfig.phoneDisplay}
       </a>
     </main>

@@ -4,5 +4,10 @@
 
 :root { color-scheme: light; }
 html { scroll-behavior: smooth; }
-body { background: #ffffff; color: #0B172A; }
-.call-shadow { box-shadow: 0 12px 30px rgba(31,111,235,.25); }
+body {
+  background: #fcfcfd;
+  color: #0B172A;
+}
+.call-shadow { box-shadow: 0 12px 30px rgba(31,111,235,.22); }
+.soft-card { box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06); }
+.section-pad { @apply py-16 md:py-20; }
