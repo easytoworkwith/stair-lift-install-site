@@ -54,13 +54,11 @@ The copy avoids risky claims such as free stair lift, Medicare coverage, guarant
 - Saturday: 8am - 10pm EST
 - Sunday: 7am - 9pm EST
 
+
 ## Split Test Landing Page
 
-A second conversion-focused landing page is included at:
+A distinct second landing page is included at:
 
 `/facebook-price`
 
-Example:
-`https://your-domain.vercel.app/facebook-price`
-
-Use this for Meta split testing against the homepage.
+Use this LP for Meta split testing against the homepage.
