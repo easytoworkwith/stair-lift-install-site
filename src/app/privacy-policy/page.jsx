@@ -25,6 +25,13 @@ export default function PrivacyPolicy() {
         <h2>Contact</h2>
         <p>For privacy-related questions, please contact us through the Contact page.</p>
       </section>
+      <section className="py-8 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-600 leading-7">
+            This website connects consumers with independent stair lift and home accessibility service providers. We do not directly provide stair lift installation services, medical advice, healthcare services, or emergency assistance.
+          </div>
+        </div>
+      </section>
       <Footer />
     </main>
   );

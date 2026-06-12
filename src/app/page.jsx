@@ -111,7 +111,9 @@ export default function HomePage() {
                   <div className="text-center sm:text-left">
                     <div className="text-sm font-extrabold text-brand-dark">Phone support available daily</div>
                     <div className="mt-1 text-xs sm:text-sm text-slate-600 leading-6">{siteConfig.hoursShort}</div>
-                    <div className="mt-2 text-xs text-slate-500 leading-5">Availability, pricing, and timelines vary by location and provider.</div>
+                    <div className="mt-2 text-xs text-slate-500 leading-5">
+                      This website connects users with independent stair lift and home accessibility service providers. We do not directly install stair lifts.
+                    </div>
                   </div>
                 </div>
               </div>
@@ -119,8 +121,12 @@ export default function HomePage() {
               <div className="mt-6 grid gap-3 sm:grid-cols-2 max-w-2xl mx-auto lg:mx-0">
                 <TrustItem>Fast phone-based availability check</TrustItem>
                 <TrustItem>Straight & curved stair options</TrustItem>
-                <TrustItem>Support for homeowners & caregivers</TrustItem>
+                <TrustItem>Support for homeowners & family members</TrustItem>
                 <TrustItem>Independent provider connection</TrustItem>
+              </div>
+
+              <div className="mt-5 max-w-2xl mx-auto lg:mx-0 rounded-2xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-xs sm:text-sm text-slate-700 leading-6">
+                <strong className="text-brand-dark">Important:</strong> We are a connection service, not a stair lift installer, medical provider, or emergency service. Availability, pricing, and installation timelines vary by location and provider.
               </div>
             </div>
 
@@ -173,7 +179,7 @@ export default function HomePage() {
                 <div className="p-5 sm:p-7">
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-dark leading-tight">Not Sure Which Stair Lift Option Fits?</h2>
                   <p className="mt-4 text-sm sm:text-base text-slate-600 leading-7">
-                    Call to discuss your staircase and check what provider options may be available near you.
+                    Call to discuss your staircase and check what provider options may be available near you. Calling does not guarantee service availability.
                   </p>
                   <CallButton className="mt-6 w-full">Call Now</CallButton>
                 </div>
@@ -310,7 +316,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-8 rounded-3xl border border-slate-200 bg-slate-50 p-5 sm:p-6 text-xs sm:text-sm text-slate-600 leading-7">
-            <strong className="text-brand-dark">Disclaimer:</strong> This website connects consumers with independent stair lift and home accessibility service providers. We do not directly provide stair lift installation services. Availability, pricing, installation timelines, and service options vary by location and provider. Calling this number does not guarantee that service is available in your area.
+            <strong className="text-brand-dark">Disclaimer:</strong> This website connects consumers with independent stair lift and home accessibility service providers. We do not directly provide stair lift installation services, medical advice, healthcare services, or emergency assistance. Availability, pricing, installation timelines, and service options vary by location and provider. Pricing may depend on staircase type, equipment, installation requirements, location, and provider. Calling this number does not guarantee service availability in your area.
           </div>
         </div>
       </section>

@@ -14,8 +14,7 @@ export default function Footer() {
             </div>
           </div>
           <p className="text-slate-300 text-sm leading-7 max-w-md">
-            Connect with independent stair lift and home accessibility service providers. Availability,
-            pricing, installation timelines, and service options vary by location and provider.
+            Connect with independent stair lift and home accessibility service providers. We do not directly provide stair lift installation services, medical advice, healthcare services, or emergency assistance. Availability, pricing, installation timelines, and service options vary by location and provider.
           </p>
         </div>
 
