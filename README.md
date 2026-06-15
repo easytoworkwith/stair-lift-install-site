@@ -55,10 +55,13 @@ The copy avoids risky claims such as free stair lift, Medicare coverage, guarant
 - Sunday: 7am - 9pm EST
 
 
-## Split Test Landing Page
+## Quiz-Style Split Test Landing Page
 
-A distinct second landing page is included at:
+A quiz-style call landing page is included at:
 
-`/facebook-price`
+`/check-options`
 
-Use this LP for Meta split testing against the homepage.
+Example:
+`https://your-domain.vercel.app/check-options`
+
+Use this for Meta split testing against the homepage.
