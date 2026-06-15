@@ -67,11 +67,11 @@ Example:
 Use this for Meta split testing against the homepage.
 
 
-## Google Ads Informational Landing Page
+## Informational Landing Page
 
 A content-rich Google Ads-safe landing page is included at:
 
-`/google-stair-lift-installation`
+`/stair-lift-installation`
 
 Example:
-`https://your-domain.vercel.app/google-stair-lift-installation`
+`https://your-domain.vercel.app/stair-lift-installation`
