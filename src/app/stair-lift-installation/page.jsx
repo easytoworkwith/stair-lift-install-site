@@ -1,8 +1,10 @@
 import {
   CheckCircle2,
   Clock3,
+  FileText,
   Home,
   Phone,
+  Ruler,
   ShieldCheck,
   Wrench,
 } from 'lucide-react';
@@ -11,60 +13,102 @@ import Footer from '../../components/Footer';
 import { siteConfig } from '../../components/siteConfig';
 
 export const metadata = {
-  title: `Stair Lift Installation Options | ${siteConfig.name}`,
-  description: 'Learn about stair lift installation options, types of stair lifts, cost factors, and independent provider availability.',
+  title: `Stair Lift Installation Guide | ${siteConfig.name}`,
+  description:
+    'Read a practical guide to stair lift installation, staircase types, cost factors, preparation steps, provider questions, and service availability considerations.',
 };
 
 const types = [
   {
     title: 'Straight Stair Lifts',
-    copy: 'A common option for staircases that run directly from one level to another without turns or landings.',
+    copy:
+      'A straight stair lift is typically used on a single, uninterrupted staircase that does not include a curve or mid-stair landing. The rail generally follows the straight stair line from one level to another.',
   },
   {
     title: 'Curved Stair Lifts',
-    copy: 'May be used for staircases with turns, landings, or custom layouts. Availability varies by provider.',
+    copy:
+      'Curved stair lifts may be considered for staircases with turns, corners, landings, or custom shapes. These projects often require more detailed measurements and provider review.',
   },
   {
     title: 'Indoor Stair Lifts',
-    copy: 'Designed for stairways inside the home. Equipment and installation needs may vary by staircase.',
+    copy:
+      'Indoor models are intended for interior stairways. Layout, wall clearance, stair width, electrical access, and where the lift parks can all affect the installation plan.',
   },
   {
     title: 'Outdoor Stair Lifts',
-    copy: 'Outdoor options may be available in some areas depending on provider, location, and staircase setup.',
+    copy:
+      'Outdoor options may be available for exterior steps, porches, decks, or garage entries. Weather exposure, surface condition, and provider service area can affect availability.',
   },
 ];
 
 const process = [
-  'Discuss your staircase type and layout',
-  'Review indoor or outdoor installation needs',
-  'Check provider availability by location',
-  'Discuss next steps and possible service options',
+  'Review the staircase shape, number of steps, landing areas, and where the chair may need to park.',
+  'Discuss whether the installation is for an indoor stairway, outdoor entry, garage access, or another home area.',
+  'Confirm whether independent providers may be available for the requested location and project type.',
+  'Ask about measurement, installation requirements, timing, equipment options, and any next steps suggested by the provider.',
 ];
 
 const costFactors = [
-  'Staircase type: straight, curved, or landing layout',
-  'Indoor or outdoor installation location',
-  'Equipment type and installation requirements',
-  'Local provider availability and service area',
-  'Home layout and staircase length',
+  'Straight, curved, multi-landing, or custom staircase layout',
+  'Indoor or outdoor installation environment',
+  'Stair width, railing location, doorways, and nearby walkways',
+  'Electrical access and charging location requirements',
+  'Equipment type, rail configuration, and selected features',
+  'Local provider availability, service area, and installation schedule',
+  'Condition of the stairs, wall, flooring, and landing surfaces',
+  'Removal, replacement, or future service needs if applicable',
+];
+
+const prepChecklist = [
+  'Count the steps and note whether the staircase is straight, curved, or includes a landing.',
+  'Check whether there is a doorway, hallway, or furniture close to the top or bottom of the stairs.',
+  'Look for nearby power outlets and any areas where a charging point may be practical.',
+  'Measure approximate stair width if possible, but do not rely on rough measurements for final planning.',
+  'Think about whether the lift should park at the top, bottom, or away from the walking path.',
+  'Prepare photos of the staircase if a provider asks for them during the review process.',
+];
+
+const providerQuestions = [
+  'Do you work with straight, curved, indoor, or outdoor stair lift installations?',
+  'What measurements or photos are usually needed before a recommendation is made?',
+  'What can affect the installation timeline for this type of staircase?',
+  'Are there clearance or electrical requirements I should understand before scheduling?',
+  'What service or support options may be available after installation?',
+  'Are there any location-based limitations or provider availability requirements?',
 ];
 
 const faqs = [
   [
     'What affects stair lift installation pricing?',
-    'Pricing may depend on staircase type, staircase length, equipment type, installation requirements, location, and provider availability.',
+    'Pricing can vary based on staircase shape, rail type, equipment selection, installation requirements, home layout, electrical access, location, and provider availability. A curved staircase may require a different review than a straight staircase.',
   ],
   [
-    'Can I get stair lift options for curved stairs?',
-    'Some providers may offer curved stair lift options depending on your staircase layout and location. Availability varies by provider.',
+    'Is a stair lift attached to the wall or the stairs?',
+    'Many stair lift systems are commonly mounted to the stair treads rather than directly to the wall, but installation details depend on the equipment and provider assessment.',
+  ],
+  [
+    'Can stair lifts work on narrow staircases?',
+    'Some staircases may have enough clearance while others may not. Stair width, rail placement, landings, doors, and walking space all matter. A provider may need measurements or photos to review the layout.',
+  ],
+  [
+    'What is the difference between straight and curved stair lifts?',
+    'Straight stair lifts are generally for staircases without turns. Curved stair lifts are designed around turns, landings, or custom stair shapes and may require more detailed planning.',
+  ],
+  [
+    'Can outdoor stairs be reviewed for stair lift options?',
+    'Outdoor stair lift options may be available in some areas. Weather exposure, stair condition, surface materials, and service area can affect whether a provider can help.',
   ],
   [
     'Is this website a stair lift installer?',
-    'No. This website connects consumers with independent stair lift and home accessibility service providers. We do not directly install stair lifts.',
+    'No. This website provides general stair lift installation information and connects consumers with independent stair lift and home accessibility service providers. We do not directly install stair lifts.',
   ],
   [
     'Does calling guarantee service availability?',
-    'No. Calling this number does not guarantee service availability. Availability, pricing, and installation timelines vary by location and provider.',
+    'No. Calling this number does not guarantee service availability. Availability, pricing, installation timelines, and service options vary by location and provider.',
+  ],
+  [
+    'Does this page provide medical advice?',
+    'No. This page is for general home accessibility and stair lift installation information only. It does not provide medical advice, healthcare services, or emergency assistance.',
   ],
 ];
 
@@ -95,7 +139,15 @@ function InfoCard({ title, copy }) {
   );
 }
 
-export default function GoogleStairLiftInstallationPage() {
+function SectionLabel({ icon, children }) {
+  return (
+    <div className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-sm font-extrabold text-brand-blue soft-card">
+      {icon} {children}
+    </div>
+  );
+}
+
+export default function StairLiftInstallationPage() {
   return (
     <main className="pb-20 md:pb-0 bg-white">
       <Header />
@@ -105,15 +157,15 @@ export default function GoogleStairLiftInstallationPage() {
           <div className="grid lg:grid-cols-[1.05fr,0.95fr] gap-8 lg:gap-10 items-center">
             <div className="text-center lg:text-left">
               <div className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white px-4 py-2 text-xs sm:text-sm font-extrabold text-brand-blue soft-card">
-                <Home size={15} /> Stair Lift Installation Information
+                <Home size={15} /> Stair Lift Installation Guide
               </div>
 
-              <h1 className="mt-5 text-[2.2rem] sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.02] text-brand-dark">
-                Stair Lift Installation Options For Your Home
+              <h1 className="mt-5 text-[2.15rem] sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.02] text-brand-dark">
+                Stair Lift Installation Information And Provider Options
               </h1>
 
               <p className="mt-5 text-base sm:text-lg md:text-xl leading-8 text-slate-600 max-w-2xl mx-auto lg:mx-0">
-                Learn about common stair lift types, installation factors, and how to check independent provider availability near you.
+                Use this guide to understand stair lift types, common installation steps, cost factors, preparation details, and questions to ask before speaking with an independent provider.
               </p>
 
               <div className="mt-7 rounded-3xl border border-slate-200 bg-white p-4 sm:p-6 soft-card max-w-2xl mx-auto lg:mx-0">
@@ -130,7 +182,7 @@ export default function GoogleStairLiftInstallationPage() {
               </div>
 
               <div className="mt-5 rounded-2xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-xs sm:text-sm text-slate-700 leading-6 max-w-2xl mx-auto lg:mx-0">
-                <strong className="text-brand-dark">Transparency note:</strong> This website connects users with independent stair lift and home accessibility service providers. We do not directly install stair lifts or provide medical advice, healthcare services, or emergency assistance.
+                <strong className="text-brand-dark">Disclosure:</strong> This website provides general information and can connect users with independent stair lift and home accessibility service providers. We do not directly install stair lifts or provide medical advice, healthcare services, or emergency assistance.
               </div>
             </div>
 
@@ -152,15 +204,33 @@ export default function GoogleStairLiftInstallationPage() {
         </div>
       </section>
 
+      <section id="overview" className="py-12 sm:py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-3 sm:px-4">
+          <div className="rounded-[1.5rem] sm:rounded-[2rem] border border-slate-200 bg-slate-50 p-6 sm:p-8 soft-card">
+            <SectionLabel icon={<FileText size={16} />}>Installation Overview</SectionLabel>
+            <h2 className="mt-5 text-3xl sm:text-4xl font-extrabold text-brand-dark">What Stair Lift Installation Usually Involves</h2>
+            <div className="mt-5 space-y-4 text-slate-600 leading-8">
+              <p>
+                A stair lift installation is usually planned around the physical layout of the staircase. A provider may review whether the stairs are straight or curved, where the lift would start and stop, how much walking space remains, and whether nearby doors, hallways, or landings affect the installation plan.
+              </p>
+              <p>
+                The process is not the same for every home. A simple straight staircase may be reviewed differently than a staircase with a turn, multiple landings, or an outdoor entry. Because of these differences, this page does not provide fixed pricing or guaranteed timelines.
+              </p>
+              <p>
+                The goal of this page is to give users helpful background information before they contact a provider. A phone call can help clarify basic details, but any final recommendation, price, or installation plan must come from the independent provider reviewing the specific home and staircase.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="types" className="py-12 sm:py-16 bg-[#f8fafc]">
         <div className="max-w-6xl mx-auto px-3 sm:px-4">
           <div className="text-center max-w-3xl mx-auto mb-10">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-sm font-extrabold text-brand-blue soft-card">
-              <Wrench size={16} /> Common Stair Lift Types
-            </div>
+            <SectionLabel icon={<Wrench size={16} />}>Common Stair Lift Types</SectionLabel>
             <h2 className="mt-5 text-3xl sm:text-4xl font-extrabold text-brand-dark">Types Of Stair Lift Options</h2>
             <p className="mt-4 text-slate-600 leading-8">
-              Stair lift options may differ based on staircase shape, indoor or outdoor use, and provider availability.
+              Stair lift options may differ based on staircase shape, indoor or outdoor use, available clearance, and provider service area.
             </p>
           </div>
 
@@ -178,18 +248,16 @@ export default function GoogleStairLiftInstallationPage() {
             <div className="rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border border-slate-200 bg-white soft-card">
               <img
                 src="/images/family-support.png"
-                alt="Family support near a staircase with a stair lift"
+                alt="Residential staircase and stair lift planning"
                 className="w-full object-cover aspect-[4/3]"
               />
             </div>
 
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-sm font-extrabold text-brand-blue soft-card">
-                <ShieldCheck size={16} /> How Provider Connection Works
-              </div>
-              <h2 className="mt-5 text-3xl sm:text-4xl font-extrabold text-brand-dark">A Simple Way To Check Availability</h2>
+              <SectionLabel icon={<ShieldCheck size={16} />}>Provider Connection Process</SectionLabel>
+              <h2 className="mt-5 text-3xl sm:text-4xl font-extrabold text-brand-dark">A Simple Way To Discuss Availability</h2>
               <p className="mt-4 text-slate-600 leading-8">
-                A phone call can help users explain their staircase and discuss available provider options. This does not guarantee service availability.
+                A representative can help collect basic project details and discuss whether independent provider options may be available. This does not guarantee service availability or a specific installation timeline.
               </p>
 
               <div className="mt-6 space-y-4">
@@ -213,12 +281,10 @@ export default function GoogleStairLiftInstallationPage() {
         <div className="max-w-6xl mx-auto px-3 sm:px-4">
           <div className="grid lg:grid-cols-[0.85fr,1.15fr] gap-8 lg:gap-10 items-start">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-sm font-extrabold text-brand-blue soft-card">
-                <Clock3 size={16} /> Pricing Information
-              </div>
-              <h2 className="mt-5 text-3xl sm:text-4xl font-extrabold text-brand-dark">Stair Lift Cost Factors</h2>
+              <SectionLabel icon={<Clock3 size={16} />}>Cost Factors</SectionLabel>
+              <h2 className="mt-5 text-3xl sm:text-4xl font-extrabold text-brand-dark">What Can Affect Stair Lift Cost?</h2>
               <p className="mt-4 text-slate-600 leading-8">
-                We do not provide fixed prices on this page because costs may vary by home, equipment, location, and provider.
+                A stair lift project can vary from home to home. Costs may depend on the stair shape, rail requirements, provider availability, equipment type, and installation conditions. This page does not advertise a fixed price.
               </p>
             </div>
 
@@ -230,6 +296,49 @@ export default function GoogleStairLiftInstallationPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="measurements" className="py-12 sm:py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-3 sm:px-4">
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            <div>
+              <SectionLabel icon={<Ruler size={16} />}>Before You Call</SectionLabel>
+              <h2 className="mt-5 text-3xl sm:text-4xl font-extrabold text-brand-dark">Helpful Details To Prepare</h2>
+              <p className="mt-4 text-slate-600 leading-8">
+                Exact measurements should be handled by a qualified provider when needed. Still, preparing a few basic details can make the first conversation easier and more useful.
+              </p>
+            </div>
+            <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 sm:p-6 soft-card">
+              <div className="space-y-3">
+                {prepChecklist.map((item) => (
+                  <div key={item} className="flex gap-3 rounded-2xl bg-white border border-slate-200 p-4">
+                    <CheckCircle2 size={19} className="text-brand-blue shrink-0 mt-0.5" />
+                    <p className="text-slate-700 leading-6 font-semibold">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="questions" className="py-12 sm:py-16 bg-[#f8fafc]">
+        <div className="max-w-6xl mx-auto px-3 sm:px-4">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <SectionLabel icon={<FileText size={16} />}>Provider Questions</SectionLabel>
+            <h2 className="mt-5 text-3xl sm:text-4xl font-extrabold text-brand-dark">Questions To Ask Before Scheduling</h2>
+            <p className="mt-4 text-slate-600 leading-8">
+              Asking clear questions can help users understand service availability, installation requirements, and possible next steps without relying on assumptions.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {providerQuestions.map((item) => (
+              <div key={item} className="rounded-3xl border border-slate-200 bg-white p-5 soft-card">
+                <p className="font-extrabold text-brand-dark leading-7">{item}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -251,6 +360,9 @@ export default function GoogleStairLiftInstallationPage() {
         <div className="max-w-4xl mx-auto px-3 sm:px-4">
           <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-dark">Frequently Asked Questions</h2>
+            <p className="mt-4 text-slate-600 leading-8">
+              These answers are general information only. Final service options depend on provider review and location.
+            </p>
           </div>
 
           <div className="space-y-4">
@@ -263,7 +375,7 @@ export default function GoogleStairLiftInstallationPage() {
           </div>
 
           <div className="mt-8 rounded-3xl border border-slate-200 bg-slate-50 p-5 sm:p-6 text-xs sm:text-sm text-slate-600 leading-7">
-            <strong className="text-brand-dark">Disclaimer:</strong> This website connects consumers with independent stair lift and home accessibility service providers. We do not directly provide stair lift installation services, medical advice, healthcare services, or emergency assistance. Availability, pricing, installation timelines, and service options vary by location and provider. Pricing may depend on staircase type, equipment, installation requirements, location, and provider. Calling this number does not guarantee service availability in your area.
+            <strong className="text-brand-dark">Disclaimer:</strong> This website provides general information and connects consumers with independent stair lift and home accessibility service providers. We do not directly provide stair lift installation services, medical advice, healthcare services, or emergency assistance. Availability, pricing, installation timelines, and service options vary by location and provider. Pricing may depend on staircase type, equipment, installation requirements, location, and provider. Calling this number does not guarantee service availability.
           </div>
         </div>
       </section>
