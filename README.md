@@ -65,3 +65,13 @@ Example:
 `https://your-domain.vercel.app/check-options`
 
 Use this for Meta split testing against the homepage.
+
+
+## Google Ads Informational Landing Page
+
+A content-rich Google Ads-safe landing page is included at:
+
+`/google-stair-lift-installation`
+
+Example:
+`https://your-domain.vercel.app/google-stair-lift-installation`

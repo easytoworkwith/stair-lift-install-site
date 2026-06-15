@@ -17,13 +17,13 @@ export default function Header() {
       </div>
 
       <div className="max-w-6xl mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between gap-3">
-        <a href="/" className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 cursor-default" aria-label={siteConfig.name}>
           <div className="h-10 w-10 sm:h-11 sm:w-11 rounded-2xl bg-brand-navy text-white flex items-center justify-center font-extrabold text-base sm:text-lg shadow-sm shrink-0">SL</div>
           <div className="min-w-0">
             <div className="font-extrabold text-brand-dark leading-none text-sm sm:text-base truncate">{siteConfig.name}</div>
             <div className="text-[11px] sm:text-xs text-slate-500 truncate">Stair Lift Installation Options</div>
           </div>
-        </a>
+        </div>
 
         <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-700">
           <a href="#options" className="hover:text-brand-blue transition-colors">Options</a>
